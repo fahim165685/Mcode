@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="be8806b7-d20a-45f4-81a2-e1f437d65d7a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../assets/icons/MCB_Icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/MCB_Icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/beef.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/burger.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/chicken.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/drinks.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/pizza.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/rice.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/icons/sey-food.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/images/MCB_Logo_ Main..png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../assets/images/No_image_found.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/components/custom_text_form_filed.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/add_product/add_product.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/add_product/components/add_product_form.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/add_product/components/product_img.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/add_product/components/select_photo_options.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/add_product/components/select_product_options_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/home_page/home_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/screen/admin/login/components/frosted_glass_box.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/icons/Flash Icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/icons/Game Icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/bd_helper/db_helper.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/components/animated_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/components/animated_button.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/components/custom_border_icon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/components/custom_border_icon.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/components/custom_surffix_Icon.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/components/custom_surffix_icon.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/constants.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/admin/login/admil_login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/admin/login/admil_login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/admin/login/components/background.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/admin/login/components/background.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/admin/login/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/admin/login/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/ bottom_navigation_bar/bottom_navigation_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/my_home_page/my_home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/bottom_navigation_bar/bottom_navigation_bar.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/forget_emile_page/components/forgot_pass_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/forget_emile_page/components/forgot_pass_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/home/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/home/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/home/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/home/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/login_success/components/body.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/login_success/components/body.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/profile/components/profile_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/profile/components/profile_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/profile/components/select_photo_options_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/profile/components/select_photo_options_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/sign_in/components/sign_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/sign_in/components/sign_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/screen/user/sing_up/components/register_form.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/screen/user/sing_up/components/register_form.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lib/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../lib/theme.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Iit3tr7gVcV4C2dL4y4GYc7mNc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle  signingreport" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="F:/Git/Mcode/android [signingreport]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="signingreport" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.F:/Git/Mcode/android [signingreport]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="be8806b7-d20a-45f4-81a2-e1f437d65d7a" name="Changes" comment="" />
+      <created>1670676037027</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1670676037027</updated>
+    </task>
+    <servers />
+  </component>
+</project>
