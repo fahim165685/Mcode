@@ -12,25 +12,23 @@ class Kachchi extends StatelessWidget {
   Widget build(BuildContext context) {
     GetProductController controller =Get.put(GetProductController());
 
-    return Obx(() =>   GridView.builder(
+    return Obx(() => GridView.builder(
       itemCount: controller.kacchiList.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 5/7,
       ), itemBuilder: (context, index) {
-      ProductDataList productDataList= controller.kacchiList[index];
-
       try{
         return ProductCard(
-          image: productDataList.image![0],
-          productName: productDataList.name!,
+          image: controller.kacchiList[index].image![0],
+          productName: controller.kacchiList[index].name!,
           totalRating: 5,
           deliveryTime: 15,
           rating: 4.85,
-          price: double.parse(productDataList.price!),
+          price: double.parse(controller.kacchiList[index].price!),
           onTap: () {
             Get.to(() => DetailsScreen(
-              productDataList: productDataList,
+              productDataList: controller.kacchiList[index],
             ),transition: Transition.leftToRightWithFade,duration: const Duration(milliseconds: 700));
           },
         );

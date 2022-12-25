@@ -9,40 +9,33 @@ class GetProductController extends GetxController {
   var productDataList = [].obs;
   var isLoading = false.obs;
   void loading() => isLoading.value = !isLoading.value;
+
+  FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
+
+  late CollectionReference collectionReference;
+
+  RxList<ProductDataList> getData= RxList<ProductDataList>([]);
+
   @override
   void onInit() {
-    productData();
+    collectionReference =firebaseFireStore.collection(filedName!);
+    getData.bindStream(getDataOn());
+    print(getData.length);
+    //productData();
     super.onInit();
   }
 
-  Future<void> productData() async {
-    loading();
-    try {
-      QuerySnapshot data =
-      await FirebaseFirestore.instance.collection(filedName!).get();
-      productDataList.clear();
-      for (var d in data.docs) {
-        productDataList.add(ProductDataList.fromMap(d));
-      }
-      loading();
-      print(await productDataList.length);
-    } catch (error) {
-      loading();
-      Get.snackbar(
-          snackPosition: SnackPosition.BOTTOM, "Error", "Error is: $error");
-      Get.back();
-    }
-  }
-
+    Stream<List<ProductDataList>> getDataOn()=>
+        collectionReference.snapshots().map((query) =>
+            query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+        );
   ///<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <deleteProduct> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
   Future<void> deleteProduct({
     required String id,
     int? index,
   }) async {
     await FirebaseFirestore.instance
-        .collection(filedName!)
-        .doc(id)
-        .delete()
+        .collection(filedName!).doc(id).delete()
         .whenComplete(() {
       Get.snackbar("Success", "Product Delete successful.",
           backgroundColor: Colors.green.withOpacity(0.2),
@@ -52,12 +45,9 @@ class GetProductController extends GetxController {
             size: 32,
           ),
           snackPosition: SnackPosition.BOTTOM);
-      Future.delayed(const Duration(milliseconds: 500));
-      productDataList.removeAt(index!);
     }).onError((error, stackTrace) => Get.snackbar("Error", error.toString(),
         snackPosition: SnackPosition.BOTTOM,
         margin: const EdgeInsets.symmetric(horizontal: 20)));
-
     print("deleteFireBaseStorageItem .................");
   }
 }

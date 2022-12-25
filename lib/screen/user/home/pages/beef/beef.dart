@@ -17,19 +17,19 @@ class Beef extends StatelessWidget {
         crossAxisCount: 2,
         childAspectRatio: 5/7,
       ), itemBuilder: (context, index) {
-      ProductDataList productDataList= controller.beefList[index];
+     // ProductDataList productDataList= controller.beefList[index];
 
       try{
         return ProductCard(
-          image: productDataList.image![0],
-          productName: productDataList.name!,
+          image: controller.beefList[index].image![0],
+          productName: controller.beefList[index].name!,
           totalRating: 5,
           deliveryTime: 15,
           rating: 4.85,
-          price: double.parse(productDataList.price!),
+          price: double.parse(controller.beefList[index].price!),
           onTap: () {
             Get.to(() =>  DetailsScreen(
-              productDataList: productDataList,
+              productDataList: controller.beefList[index],
             ),transition: Transition.leftToRightWithFade,duration: const Duration(milliseconds: 700));
           },
         );

@@ -1,4 +1,5 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mcode/components/default_button.dart';
 import 'package:mcode/constants.dart';
@@ -22,17 +23,17 @@ class Body extends StatelessWidget {
           ),
           ///total order & price & favorite
            const Padding(
-             padding: EdgeInsets.only(left: 25),
+             padding: EdgeInsets.only(left: 10),
              child: TotalOrder(),
            ),
           const SizedBox(
             height: 40,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text("Beef Burger",
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(productDataList.name!,
                 maxLines: 2,
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                     fontSize: 35)),
@@ -40,11 +41,11 @@ class Body extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-           const Padding(
-             padding: EdgeInsets.symmetric(horizontal: 25),
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 10),
              child: Text(
-              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer",
-              maxLines: 3,
+               productDataList.description!,
+              maxLines: 5,
               textAlign: TextAlign.justify,
           ),
            ),
@@ -68,7 +69,7 @@ class Body extends StatelessWidget {
                             color: Colors.yellow[800],
                             size: 25,
                           )),
-                      const TextSpan(text: " 30 Mint"),
+                       TextSpan(text: " ${productDataList.deliveryTime!} Min"),
                     ])),
                 RichText(
                     text: TextSpan(
@@ -84,7 +85,7 @@ class Body extends StatelessWidget {
                             color: Colors.yellow[900],
                             size: 25,
                           )),
-                      const TextSpan(text: "100 Kcal"),
+                      TextSpan(text: "${productDataList.kilocalorie!} Kcal"),
                     ])),
                 RichText(
                     text: TextSpan(
@@ -100,7 +101,7 @@ class Body extends StatelessWidget {
                             color: kPrimaryColor.withOpacity(0.9),
                             size: 25,
                           )),
-                      const TextSpan(text: " 5-10 Min"),
+                      TextSpan(text: " ${productDataList.makingTime!} Min"),
                     ])),
               ],
             ),

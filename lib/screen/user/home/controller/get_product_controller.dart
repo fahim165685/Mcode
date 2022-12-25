@@ -3,144 +3,82 @@ import 'package:get/get.dart';
 import 'package:mcode/model/prodact_list.dart';
 
 class GetProductController extends GetxController {
-   var burgerList = [].obs;
-   var beefList = [].obs;
-   var seeFishList = [].obs;
-   var pizzaList = [].obs;
-   var chickenList = [].obs;
-   var kacchiList = [].obs;
-   var drinksList = [].obs;
+   FirebaseFirestore firebaseFireStore = FirebaseFirestore.instance;
+
+   RxList<ProductDataList> burgerList = RxList<ProductDataList>([]);
+    RxList<ProductDataList> beefList= RxList<ProductDataList>([]);
+   RxList<ProductDataList> seeFishList= RxList<ProductDataList>([]);
+   RxList<ProductDataList> pizzaList= RxList<ProductDataList>([]);
+   RxList<ProductDataList> chickenList= RxList<ProductDataList>([]);
+   RxList<ProductDataList> kacchiList= RxList<ProductDataList>([]);
+   RxList<ProductDataList> drinksList= RxList<ProductDataList>([]);
+
+   late CollectionReference collectionReference;
+
 
    @override
    void onInit() {
       burgerData();
+      burgerList.bindStream(burgerData());
+
       beefData();
+      beefList.bindStream(beefData());
+
       seeFishData();
+      seeFishList.bindStream(seeFishData());
+
       pizzaData();
+      pizzaList.bindStream(pizzaData());
+
       chickenData();
+      chickenList.bindStream(chickenData());
+
       kacchiData();
+      kacchiList.bindStream(kacchiData());
+
       drinksData();
+      drinksList.bindStream(drinksData());
       super.onInit();
    }
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <Burger> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> burgerData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('burger').get();
-         burgerList.clear();
-         for (var d in data.docs) {
-            burgerList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error", "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> burgerData()=>
+       firebaseFireStore.collection('burger').snapshots().map((query) =>
+       query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <Beef> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> beefData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('beef').get();
-        // beefList.clear();
-         for (var d in data.docs) {
-            beefList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error", "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> beefData()=>
+       firebaseFireStore.collection('beef').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <See Fish> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> seeFishData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('seeFish').get();
-         seeFishList.clear();
-         for (var d in data.docs) {
-            seeFishList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error", "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> seeFishData()=>
+       firebaseFireStore.collection('seeFish').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <Pizza> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> pizzaData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('pizza').get();
-         pizzaList.clear();
-         for (var d in data.docs) {
-            pizzaList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error", "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> pizzaData()=>
+       firebaseFireStore.collection('pizza').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <Chicken> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> chickenData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('chicken').get();
-         chickenList.clear();
-         for (var d in data.docs) {
-            chickenList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error",
-             "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> chickenData()=>
+       firebaseFireStore.collection('chicken').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <kacchi> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> kacchiData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data =
-         await FirebaseFirestore.instance.collection('kacchi').get();
-         kacchiList.clear();
-         for (var d in data.docs) {
-            kacchiList.add(ProductDataList.fromMap(d));
-         }
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error",
-             "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> kacchiData()=>
+       firebaseFireStore.collection('kacchi').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 
    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <drinks> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>//
-   Future<void> drinksData() async {
-      print("object>>>>>>>>>>>>>>>>>>>1");
-      try {
-         QuerySnapshot data = await FirebaseFirestore.instance.collection('drinks').get();
-         drinksList.clear();
-         for (var d in data.docs) {
-            drinksList.add(ProductDataList.fromMap(d));
-         }
-         print("${drinksList.length}>>>>>>>>>>>>>>>>>>>1");
-      } catch (error) {
-         Get.snackbar(
-             snackPosition: SnackPosition.BOTTOM, "Error",
-             "Error is: $error");
-         Get.back();
-      }
-   }
+   Stream<List<ProductDataList>> drinksData()=>
+       firebaseFireStore.collection('drinks').snapshots().map((query) =>
+           query.docs.map((item) => ProductDataList.fromMap(item)).toList()
+       );
 }

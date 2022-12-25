@@ -17,19 +17,19 @@ class Drinks extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         childAspectRatio: 5/7,
-      ), itemBuilder: (context, index) {
-      ProductDataList productDataList= controller.drinksList[index];
-      try{
+      ),
+      itemBuilder: (context, index) {
+       try{
         return ProductCard(
-          image: productDataList.image![1],
-          productName: productDataList.name!,
+          image: controller.drinksList[index].image![1],
+          productName: controller.drinksList[index].name!,
           totalRating: 5,
           deliveryTime: 15,
           rating: 4.85,
-          price: double.parse(productDataList.price!),
+          price: double.parse(controller.drinksList[index].price!),
           onTap: () {
             Get.to(() => DetailsScreen(
-              productDataList: productDataList,
+              productDataList: controller.drinksList[index],
             ),transition: Transition.leftToRightWithFade,duration: const Duration(milliseconds: 700));
           },
         );

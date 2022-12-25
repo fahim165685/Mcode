@@ -54,43 +54,37 @@ class ProductDetailsPage extends StatelessWidget {
           ),
           title: Text(filedName.toUpperCase()),
         ),
-        body: Obx(() {
-          if (controller.productDataList.isEmpty) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return GridView.builder(
-              itemCount: controller.productDataList.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 5 / 7),
-              itemBuilder: (context, index) {
-                ProductDataList productDataList = controller.productDataList[index];
-                try {
-                  return itemCard(
-                      context: context,
-                      image: productDataList.image![0],
-                      price: productDataList.price!,
-                      name: productDataList.name!,
-                      onEdit: () {
-                        showUpdateOptions(
-                            context: context, productDataList: productDataList);
-                      },
-                      onDelete: () {
-                        controller.deleteProduct(
-                          id: productDataList.id!,
-                          index: index,
-                        );
-                      },
-                      onDetails: () {
-                        Get.to(() =>  Details(productDataList: productDataList),
-                            duration: const Duration(seconds: 1));
-                      });
-                } catch (f) {
-                  return Image.asset("assets/images/No_image_found.png");
-                }
-              },
-            );
-          }
-        }));
+        body: Obx(()=>  GridView.builder(
+          itemCount: controller.getData.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, childAspectRatio: 5 / 7),
+          itemBuilder: (context, index) {
+            //ProductDataList productDataList = controller.productDataList[index];
+            try {
+              return itemCard(
+                  context: context,
+                  image: controller.getData[index].image![0],
+                  price: controller.getData[index].price!,
+                  name: controller.getData[index].name!,
+                  onEdit: () {
+                    showUpdateOptions(
+                        context: context, productDataList: controller.getData[index]);
+                  },
+                  onDelete: () {
+                    controller.deleteProduct(
+                      id: controller.getData[index].id!,
+                      index: index,
+                    );
+                  },
+                  onDetails: () {
+                    Get.to(() =>  Details(productDataList: controller.getData[index]),
+                        duration: const Duration(seconds: 1));
+                  });
+            } catch (f) {
+              return Image.asset("assets/images/No_image_found.png");
+            }
+          },
+        )));
   }
 
   Card itemCard({

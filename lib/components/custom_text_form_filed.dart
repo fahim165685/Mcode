@@ -14,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     this.keyboardType,
     this.hintText,
     this.maxLines = 1,
+    this.maxLength,
   }) : super(key: key);
 
   final TextEditingController? controller;
@@ -24,13 +25,15 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon,prefixIcon;
   final TextInputType? keyboardType;
   final double padding;
-  final int? maxLines;
+  final int? maxLines,maxLength;
+
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.symmetric(vertical: padding),
       child: TextFormField(
+        maxLength:maxLength ,
         maxLines:maxLines,
         controller: controller,
         style: const TextStyle(color: Colors.black, fontSize: 18),

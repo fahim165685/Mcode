@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mcode/model/prodact_list.dart';
 import 'package:mcode/screen/user/details_screen/details_screen.dart';
 import 'package:mcode/screen/user/home/components/product_card.dart';
 import 'package:mcode/screen/user/home/controller/get_product_controller.dart';
@@ -18,20 +17,20 @@ class Burger extends StatelessWidget {
       crossAxisCount: 2,
           childAspectRatio: 5/7,
     ), itemBuilder: (context, index) {
-      ProductDataList productDataList= controller.burgerList[index];
+
 
         try{
           return ProductCard(
-            image: productDataList.image![0],
-            productName: productDataList.name!,
+            image: controller.burgerList[index].image![0],
+            productName: controller.burgerList[index].name!,
             totalRating: 5,
             deliveryTime: 15,
             rating: 4.85,
-            price: double.parse(productDataList.price!),
+            price: double.parse(controller.burgerList[index].price!),
             onTap: () {
               Get.to(() => DetailsScreen(
-                productDataList: productDataList,
-              ),transition: Transition.leftToRightWithFade,duration: Duration(milliseconds: 700));
+                productDataList: controller.burgerList[index],
+              ),transition: Transition.leftToRightWithFade,duration: const Duration(milliseconds: 700));
             },
           );
         }

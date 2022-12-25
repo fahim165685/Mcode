@@ -19,21 +19,22 @@ class SeaFish extends StatelessWidget {
         crossAxisCount: 2,
         childAspectRatio: 5/7,
       ), itemBuilder: (context, index) {
-      ProductDataList seeFishList = controller.seeFishList[index];
       if(controller.seeFishList.isEmpty){
         return const Center(child: CircularProgressIndicator());
       }
 
       try{
         return ProductCard(
-          image: seeFishList.image![0],
-          productName: seeFishList.name!,
+          image: controller.seeFishList[index].image![0],
+          productName: controller.seeFishList[index].name!,
           totalRating: 5,
           deliveryTime: 15,
           rating: 4.85,
-          price: double.parse(seeFishList.price!),
+          price: double.parse(controller.seeFishList[index].price!),
           onTap: () {
-            Get.to(() => DetailsScreen(),transition: Transition.leftToRightWithFade,duration: Duration(milliseconds: 700));
+            Get.to(() => DetailsScreen(
+              productDataList: controller.seeFishList[index],
+            ),transition: Transition.leftToRightWithFade,duration: const Duration(milliseconds: 700));
           },
         );
       }
