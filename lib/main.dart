@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:mcode/splash.dart';
+import 'package:mcode/screen/user/splash_minhaz/splash_screen.dart';
 import 'package:mcode/theme.dart';
 
 
@@ -11,7 +11,7 @@ void main()async{
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
+    DeviceOrientation.portraitDown,
   ]);
   runApp(const MyApp());
 }
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'M Code',
       theme: theme(),
-      home:const Splash(),
+      home:const SplashScreen(),
     );
   }
 }

@@ -14,31 +14,43 @@ class GController extends GetxController {
   RxBool checkbox = true.obs;
 }
 
-class SignForm extends StatelessWidget {
+class SignForm extends StatefulWidget {
    const SignForm({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController emileController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+  State<SignForm> createState() => _SignFormState();
+}
 
-    final formKey = GlobalKey<FormState>();
-    GController controller = Get.put(GController());
-    
-    //Firebase.....
-    FirebaseAuth auth = FirebaseAuth.instance;
-    void LogIn(){
-      auth.signInWithEmailAndPassword(
-        email: emileController.text.toString(),
-        password: passwordController.text.toString(),
-      ).then((value){
-        customSnackBar(context: context, contentType: ContentType.success, title: "Successful", massage: "Your Account LogIn Successful");
-        Get.to(()=>const LoginSuccessScreen());
-      }).onError((error, stackTrace){
-        debugPrint(error.toString());
-        customSnackBar(context: context, contentType: ContentType.failure, title: "Warning", massage: "Information not valid");
-      });
-    }
+class _SignFormState extends State<SignForm> {
+
+  TextEditingController emileController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  GController controller = Get.put(GController());
+  //Firebase.....
+  FirebaseAuth auth = FirebaseAuth.instance;
+  void LogIn(){
+    auth.signInWithEmailAndPassword(
+      email: emileController.text.toString(),
+      password: passwordController.text.toString(),
+    ).then((value){
+      customSnackBar(context: context, contentType: ContentType.success, title: "Successful", massage: "Your Account LogIn Successful");
+      Get.to(()=>const LoginSuccessScreen());
+    }).onError((error, stackTrace){
+      debugPrint(error.toString());
+      customSnackBar(context: context, contentType: ContentType.failure, title: "Warning", massage: "Information not valid");
+    });
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emileController.dispose();
+    passwordController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         key: formKey,
@@ -119,5 +131,4 @@ class SignForm extends StatelessWidget {
           ],
         ));
   }
-
 }

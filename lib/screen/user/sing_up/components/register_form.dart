@@ -61,14 +61,36 @@ class RegController extends GetxController {
   }
 }
 
-class RegisterFrom extends StatelessWidget {
+class RegisterFrom extends StatefulWidget {
   const RegisterFrom({Key? key}) : super(key: key);
 
   @override
+  State<RegisterFrom> createState() => _RegisterFromState();
+}
+
+class _RegisterFromState extends State<RegisterFrom> {
+
+  ///Controller
+  TextEditingController emileController= TextEditingController();
+  TextEditingController nameController= TextEditingController();
+  TextEditingController phoneController= TextEditingController();
+  TextEditingController passwordController= TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  //Controller
+  RegController controller = Get.put(RegController());
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emileController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    passwordController.dispose();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    //Controller
-    RegController controller = Get.put(RegController());
     return Obx(() =>   Form(
         autovalidateMode: AutovalidateMode.onUserInteraction,
         key: formKey,
@@ -183,5 +205,4 @@ class RegisterFrom extends StatelessWidget {
         )
     ));
   }
-
 }
