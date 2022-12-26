@@ -19,7 +19,7 @@ class AddProductController extends GetxController{
     required String imagePath,
     required String collectionName,
         required String name,
-        required String price,
+        required double price,
         required String makingTime,
         required String deliveryTime,
         required String kcal,
@@ -33,6 +33,7 @@ class AddProductController extends GetxController{
       'deliveryTime': deliveryTime,
       'description': description,
       'kilocalorie': kcal,
+      'isFavourite':false,
     });
     uploadImg(id: response.id, images: list,imagePath: imagePath,collectionName:collectionName);
 

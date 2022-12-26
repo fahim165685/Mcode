@@ -64,7 +64,7 @@ class ProductDetailsPage extends StatelessWidget {
               return itemCard(
                   context: context,
                   image: controller.getData[index].image![0],
-                  price: controller.getData[index].price!,
+                  price:controller.getData[index].price!.toString(),
                   name: controller.getData[index].name!,
                   onEdit: () {
                     showUpdateOptions(
@@ -302,7 +302,7 @@ class Details extends StatelessWidget {
               ),
               _buildRow(
                   name: "Price",
-                  filed: productDataList.price!
+                  filed: productDataList.price!.toString()
               ),
               _buildRow(
                   name: "Making Time",

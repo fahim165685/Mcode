@@ -19,7 +19,7 @@ class SplashController extends GetxController {
   Future startAnimation()async{
     await Future.delayed(const Duration(milliseconds: 500));
     animate.value = true;
-    await Future.delayed(const Duration(milliseconds: 2000));
+    await Future.delayed(const Duration(milliseconds: 1500));
    Get.offAll(()=>const SplashScreen(),duration: const Duration(milliseconds: 500),transition: Transition.fade);
   }
 
@@ -39,7 +39,7 @@ class Splash extends StatelessWidget {
         child: Stack(
           children: [
             AnimatedPositioned(
-                  duration: const Duration(milliseconds: 1500),
+                  duration: const Duration(milliseconds: 1000),
                 top: controller.animate.value ? 0: -30,
                 left:controller.animate.value ? 0: -50,
                 child: Container(
@@ -59,9 +59,9 @@ class Splash extends StatelessWidget {
             ),
 
             AnimatedPositioned(
-                duration: const Duration(milliseconds: 1500),
-                right: controller.animate.value ? -120:-25,
-                bottom:  controller.animate.value ? -120:-50,
+                duration: const Duration(milliseconds: 1000),
+                right: controller.animate.value ? -100:100,
+                bottom:  controller.animate.value ? -150:-50,
                 child: Container(
                   width: 300,
                   height: 300,
@@ -79,12 +79,11 @@ class Splash extends StatelessWidget {
             ),
 
             BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 15.0, sigmaY: 15.0),
+              filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0),
               child: Container(),
             ),
             Container(
               decoration: BoxDecoration(
-                image: const DecorationImage(image: NetworkImage("https://live.staticflickr.com/8465/8376267144_b0c41f8d65_b.jpg"),fit: BoxFit.cover,opacity: 0.05),
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
                       end: Alignment.bottomLeft,
@@ -93,15 +92,14 @@ class Splash extends StatelessWidget {
                         Colors.white.withOpacity(0.05),
                       ])),
             ),
-             AnimatedPositioned(
-               duration: const Duration(milliseconds: 1500),
-                top:controller.animate.value ? 0:100,
+             Positioned(
+                top:0,
                 bottom: 0,
                 left: 0,
-                right: controller.animate.value ? 0:-600,
-                child: Center(
-                  child: Image.asset("assets/images/MCB_Logo_ Main.png",width: Get.width*0.9,),
-                ),
+                right: 0,
+                child: SizedBox(
+                    width: Get.width*0.5,
+                    child: Image.asset("assets/images/MCB_Logo_ Main.png",)),
               ),
 
           ],

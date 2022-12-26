@@ -10,11 +10,6 @@ class FavoritePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("My Favorite"),
-        leading: CustomBorderIcon(
-          press: () {},
-          icon: Icons.arrow_back_ios_new_rounded,
-
-        ),
       ),
       body: const Body(),
     );

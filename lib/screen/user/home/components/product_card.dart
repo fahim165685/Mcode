@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mcode/constants.dart';
 import 'package:mcode/screen/user/home/components/frosted_glass_box.dart';
+import 'package:mcode/screen/user/home/controller/home_page_controller.dart';
 
-class ProductCard extends StatefulWidget {
-  final String image, productName;
+class ProductCard extends StatelessWidget {
+  final String image, productName,productId,description;
   final int totalRating, deliveryTime;
   final double rating, price, height, width;
-  final VoidCallback onTap;
-
-  const ProductCard(
+  final VoidCallback onTap,onFavorite;
+  final bool isFavorite;
+   const ProductCard(
       {super.key,
       required this.image,
       required this.productName,
@@ -19,23 +20,22 @@ class ProductCard extends StatefulWidget {
       required this.price,
       required this.onTap,
       this.height=260,
-      this.width=180
+      this.width=180,
+      required this.productId,
+        required this.description,
+        required this.onFavorite,
+        required this.isFavorite,
       });
 
   @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool isFavorite = false;
-
-  @override
   Widget build(BuildContext context) {
+    //AddToCardController addToCardController = Get.put(AddToCardController());
+    HomePageController controller =Get.put(HomePageController());
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: onTap,
       child: Container(
-        height: widget.height,
-        width: widget.width,
+        height: height,
+        width: width,
         clipBehavior: Clip.hardEdge,
         margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         decoration: BoxDecoration(
@@ -53,7 +53,7 @@ class _ProductCardState extends State<ProductCard> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     image: DecorationImage(
-                        image: (widget.image.isEmpty)? const AssetImage("assets/icons/MCB_Icon.png"):  NetworkImage(widget.image) as ImageProvider , fit: BoxFit.cover),
+                        image: (image.isEmpty)? const AssetImage("assets/icons/MCB_Icon.png"):  NetworkImage(image) as ImageProvider , fit: BoxFit.cover),
                     color: Colors.white,
                   ),
                   child: Stack(
@@ -62,13 +62,8 @@ class _ProductCardState extends State<ProductCard> {
                           right: 0,
                           top: 0,
                           child: FrostedGlassBox(
-                              onTap: () {
-                                setState(() {
-                                  isFavorite = !isFavorite;
-                                });
-                              },
-                              color:
-                                  (isFavorite == true) ? Colors.red : Colors.white,
+                              onTap: onFavorite,
+                              color: (isFavorite == true) ? Colors.red : Colors.white,
                               height: 40,
                               width: 40,
                               borderRadius: const BorderRadius.only(
@@ -86,7 +81,7 @@ class _ProductCardState extends State<ProductCard> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Text(widget.productName,
+                  child: Text(productName,
                       maxLines: 2,
                       style: const TextStyle(
                           fontSize: 18,
@@ -98,9 +93,9 @@ class _ProductCardState extends State<ProductCard> {
                 Row(
                   children: [
                      Icon(Icons.star,size: 18,color: Colors.yellow[700]),
-                    Text(widget.rating.toString()),
+                    Text(rating.toString()),
                     const Text('/5 '),
-                    Text("(${widget.totalRating}) "),
+                    Text("($totalRating) "),
                     Icon(Icons.fiber_manual_record,size: 8,color: Colors.grey[400],),
                     const Text(" 25 Sold")
                   ],
@@ -108,7 +103,7 @@ class _ProductCardState extends State<ProductCard> {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Text("৳${widget.price}",style: const TextStyle(color: kPrimaryColor,fontSize: 22,fontWeight: FontWeight.w600)),
+                  child: Text("৳$price",style: const TextStyle(color: kPrimaryColor,fontSize: 22,fontWeight: FontWeight.w600)),
                 ),
                 const Spacer(),
               ],
@@ -117,7 +112,15 @@ class _ProductCardState extends State<ProductCard> {
               bottom: 0,
               right: 0,
               child: InkWell(
-                onTap: (){},
+                onTap: (){
+                  controller.addToCard(
+                    context: context,
+                    name: productName,
+                    price:double.parse(price.toString()),
+                    image: image,
+                    productID: productId,
+                  );
+                },
                 borderRadius: BorderRadius.circular(15),
                 child: Container(
                   height: 40,

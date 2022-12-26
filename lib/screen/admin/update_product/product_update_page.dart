@@ -100,7 +100,7 @@ class ProductUpdatePage extends StatelessWidget {
                           children: [
                             _headLineText(headName: "Product Price"),
                             _buildTextFormField(
-                                hintText: productDataList.price,
+                                hintText: productDataList.price.toString(),
                                 controller: controller.productPriceCTR
                             ),
                           ],

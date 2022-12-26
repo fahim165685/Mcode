@@ -8,6 +8,7 @@ class ProductDataList {
   String? deliveryTime;
   String? description;
   String? kilocalorie;
+  bool? isFavourite;
   List? image;
 
   ProductDataList(
@@ -18,7 +19,9 @@ class ProductDataList {
       this.deliveryTime,
       this.kilocalorie,
       this.makingTime,
-      this.image});
+      this.isFavourite,
+      this.image
+      });
 
   ProductDataList.fromMap(DocumentSnapshot data) {
     id = data['id'];
@@ -28,6 +31,7 @@ class ProductDataList {
     deliveryTime = data['deliveryTime'];
     kilocalorie = data['kilocalorie'];
     description = data['deliveryTime'];
+    isFavourite = data['isFavourite'];
     image = data['Img'];
   }
 }

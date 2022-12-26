@@ -1,58 +1,39 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
 import 'package:mcode/components/default_button.dart';
 import 'package:mcode/screen/user/favorite/components/favorite_card.dart';
+import 'package:mcode/screen/user/favorite/controller/favorite_controller.dart';
 
-class Body extends StatefulWidget {
+class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
-}
-
-class _BodyState extends State<Body> {
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // FavoriteCard()
-        FavoriteCard(
-          onAddToCard: (){},
-            onRemove: (){},
-            press: (){},
-            image: "assets/images/pizza.png",
-            price: 890,
-            productDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
-            productName: "Margherita Pizza",
-            rating: 4.5,
-            totalSel: 20,
-          ),
-        FavoriteCard(
-          onAddToCard: (){},
-          onRemove: (){},
-          press: (){},
-          image: "assets/images/Kachchi.png",
-          price: 299,
-          productDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
-          productName: "Beef Kacchi",
-          rating: 4.5,
-          totalSel: 20,
-        ),
-        FavoriteCard(
-          onAddToCard: (){},
-          onRemove: (){},
-          press: (){},
-          image: "assets/images/drikns.png",
-          price: 160,
-          productDescription: "Lorem Ipsum is simply dummy text of the printing and typesetting",
-          productName: "Drinks",
-          rating: 4.5,
-          totalSel: 20,
-        ),
-
-      ],
-    );
+    FavoriteController controller = Get.put(FavoriteController());
+    return Obx(() => (controller.favoriteList.isEmpty)? itemIsEmpty():  ListView.builder(
+      itemCount: controller.favoriteList.length,
+      itemBuilder: (context, index) => FavoriteCard(
+        onAddToCard: (){
+          controller.addToCard(
+            productID: controller.favoriteList[index].id!,
+            context: context,
+            name: controller.favoriteList[index].name!,
+            image: controller.favoriteList[index].image!,
+            price: controller.favoriteList[index].price!
+          );
+        },
+        onRemove: (){
+          controller.deleteFavorite(
+            context: context,
+            productID: controller.favoriteList[index].id!
+          );
+        },
+        image: controller.favoriteList[index].image!,
+        price: controller.favoriteList[index].price!,
+        productDescription: controller.favoriteList[index].description!,
+        productName: controller.favoriteList[index].name!,
+      ),
+    ));
   }
 
   SizedBox itemIsEmpty() {

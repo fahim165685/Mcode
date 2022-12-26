@@ -32,15 +32,22 @@ class RegController extends GetxController {
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<< <Register Account> >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   Future<void> registerAccount({required String email, required String password,BuildContext? context})async{
     loading();
+
     await auth.createUserWithEmailAndPassword(
     email: email,
     password:password).then((value){
 
        firebaseFireStore.collection("UserProfile").doc(value.user!.uid).set(
           {
-            'name':nameController.text,
-            'phone':phoneController.text,
-            'email':emileController.text
+
+            'userId': value.user!.uid.toString(),
+            'createdAt':DateTime.now().toString(),
+            'name':nameController.text.trim(),
+            'phone':phoneController.text.trim(),
+            'email':emileController.text.trim(),
+            'age':'',
+            'gender':'',
+
           });
 
       loading();

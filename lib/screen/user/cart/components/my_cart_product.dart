@@ -2,27 +2,25 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mcode/constants.dart';
-
-class MyCartProduct extends StatefulWidget {
+import 'package:mcode/screen/user/cart/controller/card_controller.dart';
+//MyCartProduct
+class MyCartProduct extends StatelessWidget {
   final String name, image;
   final double price;
   final VoidCallback onRemove;
   final int qut;
+  CardController controller;
 
-  const MyCartProduct({
+   MyCartProduct({
     super.key,
     required this.name,
     required this.image,
     required this.price,
     required this.onRemove,
     this.qut = 1,
+    required this.controller,
   });
 
-  @override
-  State<MyCartProduct> createState() => _MyCartProductState();
-}
-
-class _MyCartProductState extends State<MyCartProduct> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +35,7 @@ class _MyCartProductState extends State<MyCartProduct> {
             width: 120,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(widget.image), fit: BoxFit.cover),
+                    image: NetworkImage(image), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
           ),
           const SizedBox(
@@ -50,7 +48,7 @@ class _MyCartProductState extends State<MyCartProduct> {
               children: [
                 const Spacer(),
                 Text(
-                  widget.name,
+                  name,
                   maxLines: 1,
                   style: const TextStyle(
                       fontSize: 20,
@@ -58,7 +56,7 @@ class _MyCartProductState extends State<MyCartProduct> {
                       fontWeight: FontWeight.w500),
                 ),
                 const Spacer(),
-                Text("Total: ${widget.qut.toString()}",style: const TextStyle(
+                Text("Total: ${qut.toString()}",style: const TextStyle(
                   fontSize: 18
                 )),
                 const Spacer(),
@@ -68,7 +66,7 @@ class _MyCartProductState extends State<MyCartProduct> {
                      //price
                      Expanded(
                        child: Text(
-                        "৳${widget.price}",
+                        "৳$price",
                         style: const TextStyle(
                             color: kPrimaryColor,
                             fontSize: 20,
@@ -91,7 +89,7 @@ class _MyCartProductState extends State<MyCartProduct> {
                              ),
                            ),
                            const SizedBox(width: 5,),
-                           Text("X${widget.qut}"),
+                           Text("X$qut"),
                            const SizedBox(width: 5,),
                            InkWell(
                              onTap: () {},
@@ -114,7 +112,7 @@ class _MyCartProductState extends State<MyCartProduct> {
             ),
           ),
           InkWell(
-            onTap: widget.onRemove,
+            onTap: onRemove,
             borderRadius: BorderRadius.circular(30),
             overlayColor: MaterialStatePropertyAll(Colors.white.withOpacity(0.2)),
             child: Ink(

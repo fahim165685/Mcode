@@ -136,7 +136,7 @@ class AddProductForm extends StatelessWidget {
                               imagePath: imagePath!,
                               collectionName:collectionName! ,
                               name: pNameCon.text,
-                              price: pPriceCon.text,
+                              price: double.parse(pPriceCon.text),
                               makingTime: pMakingTimeCon.text,
                               deliveryTime: pDeliveryTimeCon.text,
                               kcal: pKcalCon.text,
